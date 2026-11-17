@@ -10,6 +10,7 @@
             --accent-color: #e67e22; /* نارنجی */
             --bg-color: #f8f9fa;
             --text-color: #333;
+            --whatsapp-color: #25D366;
         }
         body {
             font-family: Tahoma, Arial, sans-serif;
@@ -19,11 +20,39 @@
             color: var(--text-color);
             line-height: 1.6;
         }
+        /* منوی بالای سایت */
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 20px 0;
-            text-align: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-color);
         }
         .container {
             width: 90%;
@@ -31,23 +60,17 @@
             margin: auto;
             overflow: hidden;
         }
+        /* هدر اصلی */
         .hero {
-            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&q=80') center/cover;
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.85)), url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
         .btn-whatsapp {
-            background-color: #25D366;
+            background-color: var(--whatsapp-color);
             color: white;
             padding: 15px 30px;
             text-decoration: none;
@@ -57,15 +80,42 @@
             display: inline-block;
             transition: transform 0.3s;
         }
-        .btn-whatsapp:hover {
-            transform: scale(1.05);
-        }
+        .btn-whatsapp:hover { transform: scale(1.05); }
+        
         .section-title {
             text-align: center;
-            margin: 50px 0 30px;
+            margin: 60px 0 40px;
             color: var(--primary-color);
             font-size: 2rem;
+            position: relative;
         }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            display: block;
+            margin: 10px auto 0;
+        }
+
+        /* بخش چرا تراوا */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .feature-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+        .feature-box h3 { color: var(--primary-color); }
+        
+        /* بخش محصولات */
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -80,28 +130,16 @@
             text-align: center;
             transition: transform 0.3s;
         }
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
+        .product-card:hover { transform: translateY(-5px); }
         .product-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             background-color: #eee;
         }
-        .product-info {
-            padding: 20px;
-        }
-        .product-title {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        .product-desc {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
+        .product-info { padding: 20px; }
+        .product-title { font-size: 1.3rem; color: var(--primary-color); margin-bottom: 10px; }
+        .product-desc { font-size: 0.95rem; color: #666; margin-bottom: 20px; }
         .btn-contact {
             background-color: var(--accent-color);
             color: white;
@@ -111,71 +149,149 @@
             display: inline-block;
             font-weight: bold;
         }
+
+        /* بخش درباره ما */
+        .about-section {
+            background-color: white;
+            padding: 50px 20px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .about-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: #555;
+        }
+
+        /* فوتر */
         footer {
             background-color: var(--primary-color);
             color: white;
+            padding: 40px 0 20px;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .footer-col { margin: 10px; }
+        .footer-col h4 { color: var(--accent-color); margin-bottom: 15px; }
+        .footer-col p { margin: 5px 0; font-size: 0.9rem; }
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
 
+    <!-- منوی سایت -->
     <header>
-        <div class="container">
-            <h2>گروه تراوا | Terrava Group</h2>
+        <div class="nav-container">
+            <a href="#" class="logo">گروه تراوا</a>
+            <div class="nav-links">
+                <a href="#home">خانه</a>
+                <a href="#products">محصولات</a>
+                <a href="#about">درباره ما</a>
+                <a href="#contact">تماس با ما</a>
+            </div>
         </div>
     </header>
 
-    <section class="hero">
+    <!-- بخش اصلی -->
+    <section class="hero" id="home">
         <div class="container">
             <h1>تأمین‌کننده تخصصی سوزن نیپل و تجهیزات خط آبخوری طیور</h1>
-            <p>با تکیه بر دانش علوم دام و تجربه در مرغداری، بهترین کیفیت را به شما ارائه می‌دهیم.</p>
+            <p>ارائه بهترین کیفیت قطعات، با تکیه بر دانش مهندسی علوم دام و تست در محیط‌های واقعی پرورش.</p>
             <a href="https://wa.me/989120000000" class="btn-whatsapp" target="_blank">تماس در واتساپ</a>
         </div>
     </section>
 
     <div class="container">
-        <h2 class="section-title">محصولات تخصصی تراوا</h2>
         
+        <!-- بخش چرا تراوا -->
+        <h2 class="section-title">چرا گروه تراوا؟</h2>
+        <div class="features">
+            <div class="feature-box">
+                <h3>دانش تخصصی</h3>
+                <p>تیم فنی ما متشکل از کارشناسان علوم دامی است که نیازهای دقیق مرغداری را می‌شناسند.</p>
+            </div>
+            <div class="feature-box">
+                <h3>تست میدانی</h3>
+                <p>تمام محصولات قبل از عرضه، در شرایط واقعی سالن‌های پرورش از نظر دوام و دبی آب ارزیابی می‌شوند.</p>
+            </div>
+            <div class="feature-box">
+                <h3>تضمین اصالت</h3>
+                <p>ما تنها قطعات نو و آکبند با آلیاژهای مقاوم را عرضه می‌کنیم. بدون واسطه و با قیمت رقابتی.</p>
+            </div>
+        </div>
+
+        <!-- بخش محصولات -->
+        <h2 class="section-title" id="products">محصولات تخصصی</h2>
         <div class="products">
             <!-- محصول ۱ -->
             <div class="product-card">
                 <!-- به جای لینک زیر، لینک عکس واقعی محصولت را بگذار -->
-                <img src="https://via.placeholder.com/400x300?text=Terrava+Nipple+Steel" alt="سوزن نیپل استیل" class="product-img">
+                <img src="https://via.placeholder.com/400x300/1a365d/ffffff?text=Terrava+Steel" alt="سوزن نیپل استیل" class="product-img">
                 <div class="product-info">
                     <h3 class="product-title">سوزن نیپل استیل گوشتی</h3>
-                    <p class="product-desc">جنس استیل ضدزنگ، دبی آب بالا، مناسب برای سنین رشد و پایان دوره. بدون نشتی.</p>
+                    <p class="product-desc">جنس استیل ضدزنگ (304)، دبی آب بالا، مناسب برای سنین رشد و پایان دوره. بدون نشتی.</p>
                     <a href="https://wa.me/989120000000" class="btn-contact" target="_blank">استعلام قیمت</a>
                 </div>
             </div>
 
             <!-- محصول ۲ -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/400x300?text=Terrava+Nipple+Combined" alt="سوزن نیپل ترکیبی" class="product-img">
+                <img src="https://via.placeholder.com/400x300/1a365d/ffffff?text=Terrava+Combined" alt="سوزن نیپل ترکیبی" class="product-img">
                 <div class="product-info">
                     <h3 class="product-title">سوزن نیپل ترکیبی</h3>
-                    <p class="product-desc">بدنه پلاستیک مقاوم و سوزن استیل. گزینه اقتصادی و بادوام برای مرغداری‌های صنعتی.</p>
+                    <p class="product-desc">بدنه پلیمری مقاوم و سوزن استیل. گزینه اقتصادی و بادوام برای مرغداری‌های صنعتی.</p>
                     <a href="https://wa.me/989120000000" class="btn-contact" target="_blank">استعلام قیمت</a>
                 </div>
             </div>
 
             <!-- محصول ۳ -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/400x300?text=Terrava+Nipple+Plastic" alt="سوزن نیپل پلاستیکی" class="product-img">
+                <img src="https://via.placeholder.com/400x300/1a365d/ffffff?text=Terrava+Plastic" alt="سوزن نیپل پلاستیکی" class="product-img">
                 <div class="product-info">
                     <h3 class="product-title">سوزن نیپل پلاستیکی</h3>
-                    <p class="product-desc">مناسب برای مرغداری‌های کوچک و پرورش بومی. سبک، ارزان و با نصب آسان.</p>
+                    <p class="product-desc">مناسب برای مرغداری‌های کوچک و پرورش بومی. سبک، مقرون‌به‌صرفه و با نصب آسان.</p>
                     <a href="https://wa.me/989120000000" class="btn-contact" target="_blank">استعلام قیمت</a>
                 </div>
             </div>
         </div>
+
+        <!-- بخش درباره ما -->
+        <h2 class="section-title" id="about">درباره گروه تراوا</h2>
+        <div class="about-section">
+            <p><strong>گروه تراوا</strong> با هدف تأمین قطعات باکیفیت و تخصصی برای صنعت طیور شکل گرفته است. ما معتقدیم که یک خط آبخوری سالم، مستقیماً بر سلامت و رشد پرنده تأثیر می‌گذارد.</p>
+            <p>تیم ما با بهره‌گیری از <strong>دانش آکادمیک مهندسی علوم دام</strong> و بررسی‌های میدانی مستمر، قطعاتی را انتخاب و عرضه می‌کند که بالاترین استانداردهای دوام و بهداشت را داشته باشند. هدف ما ارائه راهکارهای فنی و مشاوره صحیح به مرغداران محترم است، نه فقط فروش یک قطعه.</p>
+        </div>
+
     </div>
 
-    <footer>
-        <div class="container">
-            <p>© ۲۰۲۴ گروه تراوا - تمامی حقوق محفوظ است.</p>
+    <!-- فوتر -->
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h4>گروه تراوا (Terrava)</h4>
+                <p>تأمین‌کننده تخصصی تجهیزات خط آبخوری طیور</p>
+            </div>
+            <div class="footer-col">
+                <h4>راه‌های ارتباطی</h4>
+                <p>واتساپ / تماس: 09120000000</p> <!-- شماره تستی -->
+                <p>ایمیل: info@terrava.ir</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © ۲۰۲۴ گروه تراوا - تمامی حقوق محفوظ است.
         </div>
     </footer>
 
